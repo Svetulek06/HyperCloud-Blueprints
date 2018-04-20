@@ -1,0 +1,31 @@
+{
+  "id": "2c9180866298794c0162d4323a0e5dc5",
+  "name": "3-Tier Java (Nginx-Tomcat-MySQL)",
+  "version": "2.0",
+  "tags": "DEV",
+  "description": "A simple Names Directory Java application. This 3-Tier Docker Java Application is deployed on Nginx, Tomcat Application Server and MySQL. Once the application is deployed, get access to monitoring, alerts and notifications, continuous delivery using Jenkins, application backups, scale in/out, in-browser terminal to access the containers, log viewing, and container updates using custom plug-ins.",
+  "shortDescription": "3-Tier Docker Java Application with Nginx, Tomcat Application Server and MySQL",
+  "externalLink": "",
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/PROP/tomcat.png",
+  "yml": "LB:\n  image: nginx:latest\n  publish_all: true\n  mem_min: 50m\n  host: host1\n  plugins:\n    - !plugin\n      id: 0H1Nk\n      restart: true\n      lifecycle: on_create, post_scale_out:AppServer, post_scale_in:AppServer, post_stop:AppServer, post_start:AppServer\n      arguments:\n        # Use container_private_ip if you're using Docker networking\n        - servers=server {{AppServer | container_private_ip}}:8080;\n        # Use container_hostname if you're using Weave networking\n        #- servers=server {{AppServer | container_hostname}}:8080;\nAppServer:\n  image: tomcat:8.0.21-jre8\n  mem_min: 600m\n  host: host1\n  cluster_size: 1\n  environment:\n    - database_driverClassName=com.mysql.jdbc.Driver\n    - database_url=jdbc:mysql://{{MySQL|container_hostname}}:3306/{{MySQL|MYSQL_DATABASE}}\n    - database_username={{MySQL|MYSQL_USER}}\n    - database_password={{MySQL|MYSQL_ROOT_PASSWORD}}\n  plugins:\n    - !plugin\n      id: oncXN\n      restart: true\n      arguments:\n        - file_url=https://github.com/dchqinc/dchq-docker-java-example/raw/master/dbconnect.war\n        - dir=/usr/local/tomcat/webapps/ROOT.war\n        - delete_dir=/usr/local/tomcat/webapps/ROOT\nMySQL:\n  image: mysql:latest\n  host: host1\n  mem_min: 400m\n  environment:\n    - MYSQL_USER=root\n    - MYSQL_DATABASE=names\n    - MYSQL_ROOT_PASSWORD={{alphanumeric|8}}",
+  "visibility": "EDITABLE",
+  "params": [
+    {
+      "label": "MySQL ROOT Password",
+      "prop": "MySQL.environment.MYSQL_ROOT_PASSWORD",
+      "suggestion": "{{alphanumeric|8}}",
+      "mandatory": false,
+      "val": null
+    },
+    {
+      "label": "Java WAR File URL",
+      "prop": "AppServer.plugins.oncXN.file_url",
+      "suggestion": "https://github.com/dchqinc/dchq-docker-java-example/raw/master/dbconnect.war",
+      "mandatory": false,
+      "val": null
+    }
+  ],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}
