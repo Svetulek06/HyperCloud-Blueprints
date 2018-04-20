@@ -93,3 +93,29 @@ MySQL:
     - MYSQL_DATABASE=names
     - MYSQL_ROOT_PASSWORD={{alphanumeric|8}}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+### Grafana & InfluxDB: Monitoring & Alerting Stack v2
+
+This blueprint deploys the hosted components needed to deliver a robust and feature monitoring/alerting
+ stack built on the time series database InfluxDB and Grafana dashboards. A wide range of data reporting 
+ agents can stream data to the InfluxDB instance, to begin capturing from Linux & Windows hosts it is 
+ suggested to deploy Telegraf on your hosts and point them towards the IP & port of the deployed InfluxDB 
+ container. The agents will automatically create the database. Add your InfluxDB instance as a datasource 
+ in Grafana and users can begin building custom dashboards.
+
+__Required Plugins:__
+- Nginx Setup Plugin
+- Deploy Java War File Plugin
+
+YAML
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+influxdb:
+  image: library/influxdb:latest
+  mem_min: 4096m
+  publish_all: true
+  restart: always
+grafana:
+  image: grafana/grafana:latest
+  publish_all: true
+  restart: always
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
