@@ -38,8 +38,6 @@ splunk:
 
 ### 3-Tier Java (Nginx-Tomcat-MySQL)
 
-Deploys a Splunk Enterprise container from the latest Docker image published by Splunk.
-
 A simple Names Directory Java application. This 3-Tier Docker Java Application is deployed on Nginx, 
 Tomcat Application Server, and MySQL. Once the application is deployed, get access to monitoring, alerts and notifications, 
 continuous delivery using Jenkins, application backups, scale in/out, in-browser terminal to access the containers, 
