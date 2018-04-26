@@ -7,6 +7,8 @@ HyperCloud - Blueprints Repository
 
 This repository is meant to house all HyperCloud Blueprint examples.  All Blueprint files in this repository are in the HyperCloud export format.  You can simply import these into HyperCloud to create new Application Container Blueprints.
 
+Some of these blueprints have a dependency on one or more plugins.  These are listed as "Required Plugins" in the section below for each particular blueprint.  Required plugins will be packaged in a zip file with the blueprint itself.  Importing a plugin is a separate activity from importing a blueprint into HyperCloud portal.  After the blueprint and plugin(s) are imported, you will have to identify the plugin ID that was associated with the imported plugin(s).  Take this ID and modify the associated plugin ID(s) in the YAML.
+
 
 ### Clone this project
 
