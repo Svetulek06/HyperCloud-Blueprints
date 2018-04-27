@@ -1,0 +1,31 @@
+{
+  "referenceId": "oncXN",
+  "version": "1.0",
+  "name": "Deploy Java War File Plugin",
+  "license": "EULA",
+  "description": "Deploys war file into tomcat webapps folder.",
+  "baseScript": "#!/bin/bash\n\nsleep 10;\nrm -rf $delete_dir\ncurl -L -o $dir $file_url",
+  "envs": [
+    {
+      "prop": "dir",
+      "val": "/usr/local/tomcat/webapps/ROOT.war",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "delete_dir",
+      "val": "/usr/local/tomcat/webapps/ROOT",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "file_url",
+      "val": "https://github.com/dchqinc/dchq-docker-java-example/raw/master/dbconnect.war",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}
