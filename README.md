@@ -103,10 +103,6 @@ This blueprint deploys the hosted components needed to deliver a robust and feat
  container. The agents will automatically create the database. Add your InfluxDB instance as a datasource 
  in Grafana and users can begin building custom dashboards.
 
-__Required Plugins:__
-- Nginx Setup Plugin
-- Deploy Java War File Plugin
-
 YAML
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 influxdb:
