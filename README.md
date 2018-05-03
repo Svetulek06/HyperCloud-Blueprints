@@ -127,6 +127,8 @@ With this you can quickly:
 * View all instances on a single subnet - "Show me all instances on 10.0.8.x"
 * View all instances of a certain size - "Show me all m4.large", or "Sort by Size"
 * View all instances owned by a certain user
+* Find the most popular AMIs deployed by users
+* Find the most popular cloud regions for users
 
 Setup: In the blueprint YAML, be sure to change the HG User, HG Password, and URL
 
