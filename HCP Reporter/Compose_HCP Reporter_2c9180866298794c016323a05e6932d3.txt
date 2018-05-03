@@ -7,7 +7,7 @@
   "shortDescription": null,
   "externalLink": null,
   "imageLink": "https://i.imgur.com/OsW20Es.jpg",
-  "yml": "nginx:\n  image: nginx:latest\n  publish_all: true\n  restart: always\n  plugins:\n    - !plugin\n      id: 9Ud4X\n      restart: true\n      arguments:\n        - hguser=admin@demotenant.local\n        - hgtoken=test1234\n        - hcpurl=https://execdemo5.skygrid.cloud",
+  "yml": "nginx:\n  image: nginx:latest\n  publish_all: true\n  restart: always\n  plugins:\n    - !plugin\n      id: 9Ud4X\n      restart: true\n      arguments:\n        - hguser=<HCP username here>\n        - hgtoken=<HCP password here>\n        - hcpurl=https://<HCP URL Here>",
   "visibility": "READABLE",
   "params": [],
   "entitlementType": "PUBLIC",
