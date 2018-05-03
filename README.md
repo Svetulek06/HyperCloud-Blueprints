@@ -130,6 +130,10 @@ With this you can quickly:
 
 Setup: In the blueprint YAML, be sure to change the HG User, HG Password, and URL
 
+#### Demo
+
+![alt text](https://github.com/hypergrid-inc/HyperCloud-Blueprints/blob/master/HCP%20Reporter/HCP-Reporter.gif?raw=true)
+
 YAML
 ```
 nginx:
