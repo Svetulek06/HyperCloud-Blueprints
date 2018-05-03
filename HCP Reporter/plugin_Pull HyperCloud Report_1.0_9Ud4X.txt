@@ -1,0 +1,31 @@
+{
+  "referenceId": "9Ud4X",
+  "version": "1.0",
+  "name": "Pull HyperCloud Report",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "apt update && apt install curl git python jq -y\n\ncd /home\ngit clone https://github.com/derekeder/csv-to-html-table\ncp -rf csv-to-html-table/* /usr/share/nginx/html\n\ncurl -ks --user $hguser:$hgtoken $hcpurl/api/report/resourcepool-usage/ | jq -r '.results[] | [ .createdBy, .owner.email, .name, .hostOrIp, .endpointType, .region, .hardwareName, .dockerServerStatus, .imageName, .id, .dataCenterName, .networkId, .hardwareId, .imageId ] | @csv ' > /usr/share/nginx/html/data/report.csv\n\ncurl -L -o /usr/share/nginx/html/index.html https://www.dropbox.com/s/use1istm9zekkmd/index.html?dl=0",
+  "envs": [
+    {
+      "prop": "hcpurl",
+      "val": "https://your-hcp-url.com",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "hguser",
+      "val": "HyperCloud User Name",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "hgtoken",
+      "val": "HyperCloud Token",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}
