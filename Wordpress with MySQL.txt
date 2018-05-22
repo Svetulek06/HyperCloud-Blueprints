@@ -6,7 +6,7 @@
   "description": "Wordpress with MySQL - Runs on Containers",
   "shortDescription": null,
   "externalLink": null,
-  "imageLink": "https://github.com/hypergrid-inc/HyperCloud-Images/blob/master/wordpress.png",
+  "imageLink": "https://github.com/hypergrid-inc/HyperCloud-Images/blob/master/wordpress.png?raw=true",
   "yml": "Wordpress:\n  image: wordpress:latest\n  publish_all: true\n  environment:\n  - WORDPRESS_DB_PASSWORD={{MySQL|MYSQL_ROOT_PASSWORD}}\n  - WORDPRESS_DB_HOST={{MySQL|container_ip}}:3306\n  - WORDPRESS_DB_USER={{MySQL|MYSQL_USER}}\n  - WORDPRESS_DB_NAME={{MySQL|MYSQL_DATABASE}}\nMySQL:\n  image: mysql:latest\n  publish_all: false\n  environment:\n  - MYSQL_USER=root\n  - MYSQL_DATABASE=wordpress\n  - MYSQL_ROOT_PASSWORD={{alphanumeric | 12}}",
   "visibility": "EDITABLE",
   "params": [
