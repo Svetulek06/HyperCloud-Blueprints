@@ -1,0 +1,25 @@
+{
+  "referenceId": "sn2QM",
+  "version": "1.0",
+  "name": "Puppet Agent Install",
+  "license": "EULA",
+  "description": "Installs puppet agent on the a CentOS 7, Ubuntu 14.04 and Ubuntu 16.04 which will point to specific puppet server.",
+  "baseScript": "#!/bin/bash\nOS_T=`ls /etc | grep -e \"_version$\"`\necho \"OS is: $OS_T\"\n\nif [ ! -z \"$OS_T\" ]\nthen\n  VERSION=`cat /etc/issue.net | grep -e \"^Ubuntu 14.04\"`\n  echo \"Debian version is: $VERSION\"\n  if [ ! -z \"$VERSION\" ]\n  then\n    echo \"Starting code to install puppet on Ubuntu14.04\"\n    wget https://apt.puppetlabs.com/puppet5-release-trusty.deb\n    dpkg -i puppet5-release-trusty.deb\n    apt-get update\n    apt-get install puppet-agent -y\n  fi\n  VERSION=`cat /etc/issue.net | grep -e \"^Ubuntu 16.04\"`\n  echo \"Debian version is: $VERSION\"\n  if [ ! -z \"$VERSION\" ]\n  then\n    echo \"Starting code to install puppet on Ubuntu16.04\"\n    wget https://apt.puppetlabs.com/puppet5-release-xenial.deb\n    dpkg -i puppet5-release-xenial.deb\n    apt update\n\tapt install puppet-agent -y\n  fi\nfi\nOS_T=`ls /etc | grep -e \"^centos-release$\"`\nif [ ! -z \"$OS_T\" ]\nthen\n  VERSION=`cat /etc/centos-release  | grep -e \"^CentOS Linux release 7\"`\n  echo \"CentOS version is: $VERSION\"\n  if [ ! -z \"$VERSION\" ]\n  then \n    echo \"Starting code to install puppet on CENTOS 7\"\n\trpm -Uvh https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm\n\tyum install puppet-agent -y\n  fi\n  \nfi\necho \"$PUPPET_SERVER_IP    $PUPPET_SERVER_FQDN\" >>/etc/hosts\n/opt/puppetlabs/bin/puppet config set server $PUPPET_SERVER_FQDN",
+  "envs": [
+    {
+      "prop": "PUPPET_SERVER_FQDN",
+      "val": "puppethc",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "PUPPET_SERVER_IP",
+      "val": "10.100.12.99",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}
