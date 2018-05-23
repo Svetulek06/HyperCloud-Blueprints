@@ -1,0 +1,25 @@
+{
+  "referenceId": "JCiLs",
+  "version": "1.0",
+  "name": "Puppet Server Configuration",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "array=(`echo \"$modules\"`)\nfor module in \"${array[@]}\"\ndo\n  echo \"Installing $module module\"\n  puppet module install $module\ndone\n\n\narray=(`echo \"$nodes\"`)\n\nfor node in \"${array[@]}\"\ndo\n  echo \"###Node Defination for $node.\n\nnode '$node'{\n\n  class { 'nginx': }\n  class { '::mysql::server':\n  root_password           => 'HyperGrid123',\n  remove_default_accounts => true,\n  override_options        => \\$override_options\n  }\n\n}\" >> /etc/puppetlabs/code/environments/production/manifests/nodes.pp\ndone\n",
+  "envs": [
+    {
+      "prop": "nodes",
+      "val": "\"Node Names\"",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "modules",
+      "val": "\"nginx edestecd-mariadb \"",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}
