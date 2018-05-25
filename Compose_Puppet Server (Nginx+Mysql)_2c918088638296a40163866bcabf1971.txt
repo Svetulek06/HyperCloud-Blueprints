@@ -1,0 +1,16 @@
+{
+  "id": "2c918088638296a40163866bcabf1971",
+  "name": "Puppet Server (Nginx+Mysql)",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Deploy a puppet server with Nginx and Mysql module and the node definition for the desired nodes to have Nginx and Mysql configuration on them.\n\nThe module names in the arguments need to be the correct puppet module and the nodes must be the white-space separated list of node FQDNs.",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/VM_COMPOSE/OPERATING_SYSTEM/debian.png",
+  "yml": "puppet:\n  image: puppet/puppetserver-standalone\n  name: puppethc\n  hostname: puppethc\n  ports:\n  - 8140:8140\n  plugins:\n  - !plugin\n    id: JCiLs\n    arguments:\n      - modules=puppet-nginx puppetlabs-mysql\n      - nodes= <Enter space separated FQDN of nodes here>",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}
