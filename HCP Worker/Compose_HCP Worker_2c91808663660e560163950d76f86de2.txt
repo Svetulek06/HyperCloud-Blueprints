@@ -1,0 +1,16 @@
+{
+  "id": "2c91808663660e560163950d76f86de2",
+  "name": "HCP Worker",
+  "version": "2.0",
+  "tags": "DEV",
+  "description": "HyperCloud Utility Container to serve as API & Plugin Broker",
+  "shortDescription": null,
+  "externalLink": "",
+  "imageLink": "https://i.imgur.com/eb636dr.png",
+  "yml": "nginx:\n  image: nginx:latest\n  publish_all: true\n  restart: always\n  plugins:\n    - !plugin\n      id: l3ETP\n      restart: true",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}
