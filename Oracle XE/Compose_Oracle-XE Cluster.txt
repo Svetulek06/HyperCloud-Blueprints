@@ -6,7 +6,7 @@
   "description": "A simple Names Directory Java application. This 2-Tier Docker Java Application is deployed on IBM WebSphere Application Server and Oracle XE. Once the application is deployed, get access to monitoring, alerts and notifications, continuous delivery using Jenkins, application backups, scale in/out, in-browser terminal to access the containers, log viewing, and container updates using custom plug-ins.",
   "shortDescription": "2-Tier Docker Java Application with IBM WebSphere Application Server and Oracle XE",
   "externalLink": "https://github.com/hypergrid-inc/dchq-docker-java-example",
-  "imageLink": "https://github.com/hypergrid-inc/HyperCloud-Images/blob/master/oracle_express_edition.png",
+  "imageLink": "https://github.com/hypergrid-inc/HyperCloud-Images/raw/master/oracle_express_edition.png",
   "yml": "master_oracle:\n  image: wnameless/oracle-xe-11g:latest\n  host: host1\n  mem_min: 400m\n  environment:\n    - SLAVE_IP={{slave_oracle | container_hostname}}\n    - username=system\n    - password=oracle\n    - sid=xe\n  plugins:\n    - !plugin\n      id: dkdG6\n      restart: false\n      lifecycle: on_create\n      arguments:\n        - SLAVE_IP={{slave_oracle | container_hostname}}\n        - SLAVE_PASSWORD={{slave_oracle | password}}\nslave_oracle:\n  image: wnameless/oracle-xe-11g:latest\n  host: host1\n  mem_min: 400m\n  environment:\n    - username=system\n    - password=oracle\n    - sid=xe\n  plugins:\n    - !plugin\n      id: UQvDO\n      restart: false\n      lifecycle: post_create",
   "visibility": "EDITABLE",
   "params": [],
