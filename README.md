@@ -151,3 +151,11 @@ nginx:
         - hgtoken=password
         - hcpurl=https://hcpurl.com
  ```
+
+ ### Oracle-XE Cluster
+ 
+ A simple Names Directory Java application. This 2-Tier Docker Java Application is deployed on IBM WebSphere Application Server and Oracle XE.
+ 
+ Required Plugins:
+	Oracle XE Master Setup (reference ID: dkdG6)
+	Oracle XE Slave Setup (reference ID: UQvDO)

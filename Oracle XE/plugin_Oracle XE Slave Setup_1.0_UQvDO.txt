@@ -1,0 +1,12 @@
+{
+  "referenceId": "UQvDO",
+  "version": "1.0",
+  "name": "Oracle XE Slave Setup",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "#!/bin/bash\n\nexport ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe\nexport ORACLE_SID=XE\n\n/u01/app/oracle/product/11.2.0/xe/bin/sqlplus sys/$password as sysdba << EOF\nrecover standby database;\nAUTO\nEOF",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

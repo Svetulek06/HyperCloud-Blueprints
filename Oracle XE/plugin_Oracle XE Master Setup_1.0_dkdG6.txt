@@ -1,0 +1,19 @@
+{
+  "referenceId": "dkdG6",
+  "version": "1.0",
+  "name": "Oracle XE Master Setup",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "#!/bin/bash\n\napt-get -y install rsync\n\nexport ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe\nexport ORACLE_SID=XE\n\nmkdir -p /u01/app/oracle/scripts/\n\ncat << EOF >> /u01/app/oracle/scripts/switch_log.sql\nalter system archive log current;\nexit;\nEOF\n\ncat << EOF >> /u01/app/oracle/scripts/master_setup.sh\n# Switch archivelog\n/u01/app/oracle/product/11.2.0/xe/bin/sqlplus sys/$password as sysdba @/u01/app/oracle/scripts/switch_log.sql\nEOF\n\nchmod +x /u01/app/oracle/scripts/master_setup.sh\n./u01/app/oracle/scripts/master_setup.sh\n\n# Sync with standby\nyes yes | /usr/bin/rsync -rtv --ignore-existing /archivelog/XE/archivelog",
+  "envs": [
+    {
+      "prop": "SLAVE_IP",
+      "val": "{{slave_oracle | container_hostname}}",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}
