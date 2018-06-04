@@ -199,9 +199,9 @@ slave_oracle:
 This Machine Compose template creates an m3.large instance of Ubuntu 16.04 in the us-west-1 region. It also copies a CA certificate for the private registry from a secure S3 bucket.
 
 Required Options:
-*subnet - This is an available AWS subnet
-*keypair - This is created and stored in AWS
-*password - This is created in the HyperCloud Portal Credential Store. Username must be "ubuntu".
+* keypair - This is created and stored in AWS
+* password - This is created in the HyperCloud Portal Credential Store. Username must be "ubuntu".
+* subnet - This is an available AWS subnet
 
 YAML
 ```
