@@ -190,9 +190,9 @@ slave_oracle:
       lifecycle: post_create
  ```
  
- Required Plugins:
-	Oracle XE Master Setup (id: dkdG6)
-	Oracle XE Slave Setup (id: UQvDO)
+Required Plugins:
+* Oracle XE Master Setup (id: dkdG6)
+* Oracle XE Slave Setup (id: UQvDO)
 	
 ### AWS M3-Large West
 
@@ -228,6 +228,6 @@ Machine:
   count: 1
  ```
  
-  Required Plugins:
-     Copy CA Certificate for Private Registry_1.0 (id: BFtbm)
-     Touch Plugin_1.0 (id: SDzqZ)
+Required Plugins:
+* Copy CA Certificate for Private Registry_1.0 (id: BFtbm)
+* Touch Plugin_1.0 (id: SDzqZ)
