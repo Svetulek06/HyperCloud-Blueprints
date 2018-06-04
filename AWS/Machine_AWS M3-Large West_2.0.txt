@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "AWS M3-Large West",
+  "version": "2.0",
+  "tags": "",
+  "description": "This Machine Compose template creates an m3.large instance of Ubuntu 16.04 in the us-west-1 region. It also copies a CA certificate for the private registry from a secure S3 bucket.",
+  "shortDescription": "This Machine Compose template creates an m3.large instance in the us-west-1 region.",
+  "externalLink": null,
+  "imageLink": "https://raw.githubusercontent.com/hypergrid-inc/HyperCloud-Images/master/Amazon_EC2.png",
+  "yml": "Machine: \n  # Note: Some of the fields are optional based on provider and can be left empty.\n  group: hg-ubuntu\n  region: us-west-1\n  description: This will provision an m3.large instance in the us-west-1 region.\n  instanceType: m3.large\n  image: us-west-1/ami-07585467\n  subnet: <AWS-Subnet>\n  affinity: true\n  securityGroup: \n  keyPair: <key-pair>\n  username: ubuntu\n  password: \"{{credentials | <Credential Store ID>}}\"\n  plugins:\n    - !plugin\n    # plugin_Copy CA Certificate for Private Registry_1.0\n      id: BFtbm\n    - !plugin\n    # plugin_Touch Plugin_1.0\n      id: SDzqZ\n  count: 1\n ",
+  "visibility": "READABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}
