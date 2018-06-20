@@ -1,0 +1,16 @@
+{
+  "id": "2c9180866405520f016413aa0dc52ea3",
+  "name": "Ansible",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Ansible Docker Container",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://github.com/hypergrid-inc/HyperCloud-Images/blob/master/Ansible_logo.png?raw=true",
+  "yml": "ANSIBLE:\n  image: ansible/ansible:ubuntu1404\n  plugins:\n  - !plugin\n      id: p8MMS\n      restart: true",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}
