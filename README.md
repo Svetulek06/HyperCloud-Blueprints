@@ -232,7 +232,7 @@ Required Plugins:
 * Copy CA Certificate for Private Registry_1.0 (id: BFtbm)
 * Touch Plugin_1.0 (id: SDzqZ)
 
-### (LAMP) PHP-MySql
+### (LAMP) PHP-MySQL
 
 A simple Names Directory PHP application. This LAMP Stack, Docker PHP Application is deployed on PHP-Apache and MySQL.
 
