@@ -231,3 +231,32 @@ Machine:
 Required Plugins:
 * Copy CA Certificate for Private Registry_1.0 (id: BFtbm)
 * Touch Plugin_1.0 (id: SDzqZ)
+
+### (LAMP) PHP-MySql
+
+A simple Names Directory PHP application. This LAMP Stack, Docker PHP Application is deployed on PHP-Apache and MySQL.
+
+YAML
+```
+PHP:
+  image: dchq/php-example:latest
+  mem_min: 600m
+  host: host1
+  publish_all: true
+  environment:
+  - DB_HOST={{MySQL|container_private_ip}}
+  - DB_USER={{MySQL|MYSQL_USER}}
+  - DB_PASS={{MySQL|MYSQL_ROOT_PASSWORD}}
+  - DB_NAME={{MySQL|MYSQL_DATABASE}}
+  - DB_PORT=3306
+  - DB_PROVIDER=mysql
+MySQL:
+  image: mysql:5
+  mem_min: 400m
+  host: host1
+  publish_all: false
+  environment:
+  - MYSQL_USER=root
+  - MYSQL_DATABASE=mysql
+  - MYSQL_ROOT_PASSWORD={{alphanumeric | 8}}
+  ```
