@@ -1,0 +1,52 @@
+{
+  "id": "2c91808664905940016500809300172d",
+  "name": "GCP DataLab Backend w/TensorFlow and GPU",
+  "version": "2.0",
+  "tags": "DEV",
+  "description": "Deploy an n1-standard-8 instance with keras and gpu support for datalab",
+  "shortDescription": null,
+  "externalLink": "",
+  "imageLink": "https://i.imgur.com/eb636dr.png",
+  "yml": "cloud-utils:\n  image: janderton/cloud-shell:latest\n  plugins:\n    - !plugin\n      id: KffE9\n      lifecycle: on_create\n      arguments:\n        - DCHQ_SCRIPT_ORDER=1\n        - image=datalab",
+  "visibility": "EDITABLE",
+  "params": [
+    {
+      "label": "Base64 encoded Service Account File",
+      "prop": "cloud-utils.plugins.KffE9.arguments.service_account",
+      "suggestion": "base64_data",
+      "mandatory": false,
+      "val": ""
+    },
+    {
+      "label": "Instance Name",
+      "prop": "cloud-utils.plugins.KffE9.arguments.instance_name",
+      "suggestion": "my-datalab-gpu",
+      "mandatory": false,
+      "val": ""
+    },
+    {
+      "label": "GCP Zone",
+      "prop": "cloud-utils.plugins.KffE9.arguments.zone",
+      "suggestion": "us-east1-c",
+      "mandatory": false,
+      "val": ""
+    },
+    {
+      "label": "User Email Address",
+      "prop": "cloud-utils.plugins.KffE9.arguments.email",
+      "suggestion": "user@company.org",
+      "mandatory": false,
+      "val": ""
+    },
+    {
+      "label": "GCP Project ID",
+      "prop": "cloud-utils.lugins.KffE9.arguments.project_id",
+      "suggestion": "my-project",
+      "mandatory": false,
+      "val": ""
+    }
+  ],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

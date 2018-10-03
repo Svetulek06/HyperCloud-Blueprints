@@ -1,0 +1,49 @@
+{
+  "referenceId": "KffE9",
+  "version": "1.0",
+  "name": "gcloud-datalab-create",
+  "license": "Apache License 2.0",
+  "description": null,
+  "baseScript": "#!/bin/bash\ntmp_service_account=$service_account\necho \"--image-name $image --machine-type n1-standard-8 --for-user $email --project $project_id --zone $zone $instance_name\"\necho \"******BASE 64 ENCODED SERVICE ACCOUNT DATA $tmp_service_account********\"\napt update && apt install google-cloud-sdk-datalab\necho \"$tmp_service_account\"| base64 -id > /tmp/service_account.json\ngcloud auth activate-service-account --key-file /tmp/service_account.json\ndatalab create --image-name $image --machine-type n1-standard-8 --for-user $email --project $project_id --zone $zone $instance_name",
+  "envs": [
+    {
+      "prop": "project_id",
+      "val": "my-project",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "email",
+      "val": "user@company.org",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "zone",
+      "val": "us-east1-c",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "image",
+      "val": "keras-gpu-python-1",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "service_account",
+      "val": "Base64_encoded_service_account_json_file",
+      "hidden": false,
+      "eval": null
+    },
+    {
+      "prop": "instance_name",
+      "val": "my-datalab-instance",
+      "hidden": false,
+      "eval": null
+    }
+  ],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}
