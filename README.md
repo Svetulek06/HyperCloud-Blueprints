@@ -151,3 +151,112 @@ nginx:
         - hgtoken=password
         - hcpurl=https://hcpurl.com
  ```
+
+ ### Oracle-XE Cluster
+ 
+ A simple Names Directory Java application. This 2-Tier Docker Java Application is deployed on IBM WebSphere Application Server and Oracle XE.
+ 
+ YAML
+```
+ master_oracle:
+  image: wnameless/oracle-xe-11g:latest
+  host: host1
+  mem_min: 400m
+  environment:
+    - SLAVE_IP={{slave_oracle | container_hostname}}
+    - username=system
+    - password=oracle
+    - sid=xe
+  plugins:
+    - !plugin
+      id: dkdG6
+      restart: false
+      lifecycle: on_create
+      arguments:
+        - SLAVE_IP={{slave_oracle | container_hostname}}
+        - SLAVE_PASSWORD={{slave_oracle | password}}
+slave_oracle:
+  image: wnameless/oracle-xe-11g:latest
+  host: host1
+  mem_min: 400m
+  environment:
+    - username=system
+    - password=oracle
+    - sid=xe
+  plugins:
+    - !plugin
+      id: UQvDO
+      restart: false
+      lifecycle: post_create
+ ```
+ 
+Required Plugins:
+* Oracle XE Master Setup (id: dkdG6)
+* Oracle XE Slave Setup (id: UQvDO)
+	
+### AWS M3-Large West
+
+This Machine Compose template creates an m3.large instance of Ubuntu 16.04 in the us-west-1 region. It also copies a CA certificate for the private registry from a secure S3 bucket.
+
+Required Options:
+* keypair - This is created and stored in AWS
+* password - This is created in the HyperCloud Portal Credential Store. Username must be "ubuntu".
+* subnet - This is an available AWS subnet
+
+YAML
+```
+Machine: 
+  # Note: Some of the fields are optional based on provider and can be left empty.
+  group: <VM Name Prefix ie AWS-USWest>
+  region: us-west-1
+  description: This will provision an m3.large instance in the us-west-1 region.
+  instanceType: m3.large
+  image: us-west-1/ami-07585467
+  subnet: <AWS-Subnet>
+  affinity: true
+  securityGroup: 
+  keyPair: <Keypair>
+  username: ubuntu
+  password: "{{credentials | <Credential Store ID>}}"
+  plugins:
+    - !plugin
+    # plugin_Copy CA Certificate for Private Registry_1.0
+      id: BFtbm
+    - !plugin
+    # plugin_Touch Plugin_1.0
+      id: SDzqZ
+  count: 1
+ ```
+ 
+Required Plugins:
+* Copy CA Certificate for Private Registry_1.0 (id: BFtbm)
+* Touch Plugin_1.0 (id: SDzqZ)
+
+### (LAMP) PHP-MySQL
+
+A simple Names Directory PHP application. This LAMP Stack, Docker PHP Application is deployed on PHP-Apache and MySQL.
+
+YAML
+```
+PHP:
+  image: dchq/php-example:latest
+  mem_min: 600m
+  host: host1
+  publish_all: true
+  environment:
+  - DB_HOST={{MySQL|container_private_ip}}
+  - DB_USER={{MySQL|MYSQL_USER}}
+  - DB_PASS={{MySQL|MYSQL_ROOT_PASSWORD}}
+  - DB_NAME={{MySQL|MYSQL_DATABASE}}
+  - DB_PORT=3306
+  - DB_PROVIDER=mysql
+MySQL:
+  image: mysql:5
+  mem_min: 400m
+  host: host1
+  publish_all: false
+  environment:
+  - MYSQL_USER=root
+  - MYSQL_DATABASE=mysql
+  - MYSQL_ROOT_PASSWORD={{alphanumeric | 8}}
+  ```

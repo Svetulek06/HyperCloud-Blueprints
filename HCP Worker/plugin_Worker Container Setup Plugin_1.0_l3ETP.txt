@@ -1,0 +1,12 @@
+{
+  "referenceId": "l3ETP",
+  "version": "1.0",
+  "name": "Worker Container Setup Plugin",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "apt update && apt install curl git python jq -y\n\ncd /home\n\ncurl -L -o /usr/share/nginx/html/index.html https://raw.githubusercontent.com/mascij/HyperCloud-UtilityContainer/master/index.html",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}

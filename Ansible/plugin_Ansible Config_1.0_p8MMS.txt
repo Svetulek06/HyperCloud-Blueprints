@@ -1,0 +1,12 @@
+{
+  "referenceId": "p8MMS",
+  "version": "1.0",
+  "name": "Ansible Config",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "#!/bin/bash\n#Check Ansible is intalled or not\nif ! which ansible > /dev/null; then\n  echo\"Ansible not installed. installing Now...\"\n  pip install ansible\nelse\n  echo \"Installed Ansible\"\nfi\n#Add the Ansible config file\necho \"[defaults]\ninventory = ./hosts\nhost_key_checking = False\" >> /home/ansible.cfg\n#mv /etc/ansible/hosts /etc/ansible/hosts_old\n\n#Create the inventory file and add the Nodes to inventory\ntouch /home/hosts\necho \"*****************Add the below public key to the root user of the hosts to be added in Ansible*************\"\ncat /root/.ssh/id_rsa.pub\necho \"***********************************************************************************************************\"",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}

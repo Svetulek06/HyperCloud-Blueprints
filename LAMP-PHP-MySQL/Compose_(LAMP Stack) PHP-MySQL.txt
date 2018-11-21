@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "(LAMP Stack) PHP-MySQL",
+  "version": "2.0",
+  "tags": "",
+  "description": "A simple Names Directory PHP application. This LAMP Stack, Docker PHP Application is deployed on PHP-Apache and MySQL. Once the application is deployed, get access to monitoring, alerts and notifications, continuous delivery using Jenkins, application backups, scale in/out, in-browser terminal to access the containers, log viewing, and container updates using custom plug-ins.",
+  "shortDescription": "LAMP Stack- Docker PHP Application with PHP-Apache and MySQL. Deploy and manage this application on vSphere, OpenStack, Amazon EC2, Microsoft Azure, Google Compute Engine, etc.",
+  "externalLink": "https://github.com/dchqinc/dchq-docker-php-example",
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/PROP/lamp.png",
+  "yml": "PHP:\n  image: dchq/php-example:latest\n  mem_min: 600m\n  host: host1\n  publish_all: true\n  environment:\n  - DB_HOST={{MySQL|container_private_ip}}\n  - DB_USER={{MySQL|MYSQL_USER}}\n  - DB_PASS={{MySQL|MYSQL_ROOT_PASSWORD}}\n  - DB_NAME={{MySQL|MYSQL_DATABASE}}\n  - DB_PORT=3306\n  - DB_PROVIDER=mysql\nMySQL:\n  image: mysql:5\n  mem_min: 400m\n  host: host1\n  publish_all: false\n  environment:\n  - MYSQL_USER=root\n  - MYSQL_DATABASE=mysql\n  - MYSQL_ROOT_PASSWORD={{alphanumeric | 8}}",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "PUBLIC",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

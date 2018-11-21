@@ -1,0 +1,16 @@
+{
+  "id": "",
+  "name": "WebLogic Cluster",
+  "version": "1.0-TEST",
+  "tags": "",
+  "description": "",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "https://raw.githubusercontent.com/hypergrid-inc/HyperCloud-Images/master/weblogic.png",
+  "yml": "AdminServer:\n  image: dchq/wls12c:latest\n  registry_id: 2c91802e52535c9a01525fd7dbfd52c5\n  mem_min: 500m\n  publish_all: true\n  host: host1\n  tty: true\n  environment:\n    - SERVER_TYPE=AdminServer\nManagedServer:\n  image: dchq/wls12c:latest\n  registry_id: 2c91802e52535c9a01525fd7dbfd52c5\n  mem_min: 500m\n  restart: always\n  publish_all: true\n  cluster_size: 1\n  tty: true\n  host: host1\n  environment:\n    - SERVER_TYPE=ManagedServer\n    - ADMIN_HOSTNAME={{AdminServer | container_private_ip}}",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}

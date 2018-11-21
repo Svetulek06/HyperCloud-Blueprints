@@ -1,0 +1,12 @@
+{
+  "referenceId": "BFtbm",
+  "version": "1.0",
+  "name": "Copy CA Certificate for Private Registry",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "#!/bin/bash  \n\nmkdir -p /etc/docker/certs.d/dchq-registry.com:5000\nwget https://www.dropbox.com/s/r3petf09xf1ahlr/ca.crt?dl=1 -O /etc/docker/certs.d/dchq-registry.com:5000/ca.crt\n",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": null
+}

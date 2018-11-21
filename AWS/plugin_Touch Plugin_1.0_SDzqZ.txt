@@ -1,0 +1,12 @@
+{
+  "referenceId": "SDzqZ",
+  "version": "1.0",
+  "name": "Touch Plugin",
+  "license": "EULA",
+  "description": null,
+  "baseScript": "#!/bin/bash\n\ntouch /tmp/test.txt",
+  "envs": [],
+  "scriptArgs": null,
+  "scriptLang": "SHELL",
+  "timeout": 30
+}
