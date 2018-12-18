@@ -1,0 +1,16 @@
+{
+  "id": "2c9180886786375d0167c2b1a0d52da9",
+  "name": "Azure ARM Viz 2.0",
+  "version": "1.0",
+  "tags": "DEV",
+  "description": "Azure Resource Manager template visualizer from https://github.com/shenglol/arm-visualizer ",
+  "shortDescription": null,
+  "externalLink": null,
+  "imageLink": "/src/icon/library/DOCKER_COMPOSE/APP/bigdata.png",
+  "yml": "services:\n  service1:\n    image: ytechie/armviz:v2\n    ports:\n    - :80",
+  "visibility": "EDITABLE",
+  "params": [],
+  "entitlementType": "OWNER",
+  "entitledUsers": [],
+  "entitledUserGroups": []
+}
